@@ -35,11 +35,15 @@
           <span class="card-title">Add Quest</span>
           <form class="col">
             <div class="row">
-              <div class="input-field col s4">
-                <input type="text" id="quest-name" class="white-text" placeholder="Name" />
-                <label for="quest-name">Quest Name</label>
+              <div class="input-field col s3">
+                <input type="text" id="quest-name" class="white-text" placeholder="Quest Name" />
+                <label for="quest-name">Quest</label>
               </div>
-              <div class="input-field col s4">
+              <div class="input-field col s9">
+                <input type="text" id="quest-description" class="white-text" placeholder="Quest Description" />
+                <label for="quest-description">Description</label>
+              </div>
+              <div class="input-field col s6">
                 <select id="map">
                   <option value="" disabled selected>Select Map</option>
                   <option value="Customs">Customs</option>
@@ -53,7 +57,7 @@
                 </select>
                 <label>Select Map</label>
               </div>
-              <div class="input-field col s4">
+              <div class="input-field col s6">
                 <select id="trader">
                   <option value="" disabled selected>Select Trader</option>
                   <option value="Jeager">Jeager</option>
@@ -65,10 +69,6 @@
                   <option value="Therapist">Therapist</option>
                 </select>
                 <label>Select Trader</label>
-              </div>
-              <div class="input-field col s12">
-                <textarea id="quest-description" class="materialize-textarea white-text" placeholder="Description"></textarea>
-                <label for="quest-description">Quest Description</label>
               </div>
               <button class="add-btn btn blue-grey darken-3"><i class="fa fa-plus"></i> Add Quest</button>
               <button class="update-btn btn orange"><i class="fa fa-pencil-square-o"></i> Update Quest</button>

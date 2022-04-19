@@ -392,14 +392,37 @@ const UICtrl = (function () {
       });
     },
     hideList: function () {
-      document.querySelector(UISelectors.customs).style.display = 'none';
-      document.querySelector(UISelectors.factory).style.display = 'none';
-      document.querySelector(UISelectors.interchange).style.display = 'none';
-      document.querySelector(UISelectors.labs).style.display = 'none';
-      document.querySelector(UISelectors.lighthouse).style.display = 'none';
-      document.querySelector(UISelectors.reserve).style.display = 'none';
-      document.querySelector(UISelectors.shoreline).style.display = 'none';
-      document.querySelector(UISelectors.woods).style.display = 'none';
+      if (document.querySelector(UISelectors.customs).hasChildNodes() === false) {
+        document.querySelector(UISelectors.customs).style.display = 'none';
+      }
+
+      if (document.querySelector(UISelectors.factory).hasChildNodes() === false) {
+        document.querySelector(UISelectors.factory).style.display = 'none';
+      }
+
+      if (document.querySelector(UISelectors.interchange).hasChildNodes() === false) {
+        document.querySelector(UISelectors.interchange).style.display = 'none';
+      }
+
+      if (document.querySelector(UISelectors.labs).hasChildNodes() === false) {
+        document.querySelector(UISelectors.labs).style.display = 'none';
+      }
+
+      if (document.querySelector(UISelectors.lighthouse).hasChildNodes() === false) {
+        document.querySelector(UISelectors.lighthouse).style.display = 'none';
+      }
+
+      if (document.querySelector(UISelectors.reserve).hasChildNodes() === false) {
+        document.querySelector(UISelectors.reserve).style.display = 'none';
+      }
+
+      if (document.querySelector(UISelectors.shoreline).hasChildNodes() === false) {
+        document.querySelector(UISelectors.shoreline).style.display = 'none';
+      }
+
+      if (document.querySelector(UISelectors.woods).hasChildNodes() === false) {
+        document.querySelector(UISelectors.woods).style.display = 'none';
+      }
     },
     clearEditState: function () {
       UICtrl.clearInput();
@@ -430,13 +453,13 @@ const AppCtrl = (function (QuestCtrl, UICtrl, StorageCtrl) {
     //Add quest event
     document.querySelector(UISelectors.addBtn).addEventListener('click', questAddSubmit);
 
-    //Disable submit on enter
-    // document.addEventListener('keypress', function (e) {
-    //   if (e.keyCode === 13 || e.which === 13) {
-    //     e.preventDefault();
-    //     return false;
-    //   }
-    // });
+    // Disable submit on enter
+    document.addEventListener('keypress', function (e) {
+      if (e.keyCode === 13 || e.which === 13) {
+        e.preventDefault();
+        return false;
+      }
+    });
 
     //Edit icon click event
     document.querySelector(UISelectors.customs).addEventListener('click', questEditClick);
@@ -538,6 +561,9 @@ const AppCtrl = (function (QuestCtrl, UICtrl, StorageCtrl) {
     //Clear state
     UICtrl.clearEditState();
 
+    //Hide empty lists
+    UICtrl.hideList();
+
     e.preventDefault();
   };
 
@@ -549,8 +575,11 @@ const AppCtrl = (function (QuestCtrl, UICtrl, StorageCtrl) {
     //Remove from UI
     UICtrl.removeQuests();
 
-    //Remove from loca storage
-    StorageCtrl.clearQuestsFromStorage;
+    //Remove from local storage
+    StorageCtrl.clearQuestsFromStorage();
+
+    //Hide UL
+    UICtrl.hideList();
   };
 
   //Public Methods
@@ -567,6 +596,9 @@ const AppCtrl = (function (QuestCtrl, UICtrl, StorageCtrl) {
 
       //Populate list with quests
       UICtrl.populateQuestList(quests);
+
+      //Hide emtpy lists
+      UICtrl.hideList();
 
       //Load event listeners
       loadEventListeners();

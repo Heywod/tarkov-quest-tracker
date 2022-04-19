@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/materialize.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Quest Tracker</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="nav-wrapper grey darken-3">
+        <div class="container">
+          <a href="#" class="brand-logo center white-text">Tarkov Quest Tracker</a>
+          <ul class="right">
+            <li><a href="#" class="clear-btn btn blue-grey darken-3">Delete All Quests</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br />
+    <div class="container">
+      <!-- Form Card -->
+      <div class="card grey darken-3">
+        <div class="card-content white-text">
+          <span class="card-title">Add Quest</span>
+          <form class="col">
+            <div class="row">
+              <div class="input-field col s4">
+                <input type="text" id="quest-name" class="white-text" placeholder="Name" />
+                <label for="quest-name">Quest Name</label>
+              </div>
+              <div class="input-field col s4">
+                <select id="map">
+                  <option value="" disabled selected>Select Map</option>
+                  <option value="Customs">Customs</option>
+                  <option value="Factory">Factory</option>
+                  <option value="Interchange">Interchange</option>
+                  <option value="Labs">Labs</option>
+                  <option value="Lighthouse">Lighthouse</option>
+                  <option value="Reserve">Reserve</option>
+                  <option value=Shoreline">Shoreline</option>
+                  <option value="Woods">Woods</option>
+                </select>
+                <label>Select Map</label>
+              </div>
+              <div class="input-field col s4">
+                <select id="trader">
+                  <option value="" disabled selected>Select Trader</option>
+                  <option value="Jeager">Jeager</option>
+                  <option value="Mechanic">Mechanic</option>
+                  <option value="Peacekeeper">Peacekeeper</option>
+                  <option value="Prapor">Prapor</option>
+                  <option value="Ragman">Ragman</option>
+                  <option value="Skier">Skier</option>
+                  <option value="Therapist">Therapist</option>
+                </select>
+                <label>Select Trader</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="quest-description" class="materialize-textarea white-text" placeholder="Description"></textarea>
+                <label for="quest-description">Quest Description</label>
+              </div>
+              <button class="add-btn btn blue-grey darken-3"><i class="fa fa-plus"></i> Add Quest</button>
+              <button class="update-btn btn orange"><i class="fa fa-pencil-square-o"></i> Update Quest</button>
+              <button class="delete-btn btn red"><i class="fa fa-remove"></i> Delete Quest</button>
+              <button class="back-btn btn grey right"><i class="fa fa-chevron-circle-left"></i> Back</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Quest List -->
+      <div class="card grey darken-3 white-text">
+        <div class="card-content">
+          <h3 class="grey-text center-align">Quests</h3>
+        </div>
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width grey darken-3 white-text">
+            <li class="tab"><a class="active" href="#customs">Customs</a></li>
+            <li class="tab"><a href="#factory">Factory</a></li>
+            <li class="tab"><a href="#interchange">Interchange</a></li>
+            <li class="tab"><a href="#labs">Labs</a></li>
+            <li class="tab"><a href="#lighthouse">Lighthouse</a></li>
+            <li class="tab"><a href="#reserve">Reserve</a></li>
+            <li class="tab"><a href="#shoreline">Shoreline</a></li>
+            <li class="tab"><a href="#woods">Woods</a></li>
+          </ul>
+        </div>
+        <div class="card-content">
+          <div id="customs">
+            <ul id="customs-quest-list" class="collection"></ul>
+          </div>
+          <div id="factory">
+            <ul id="factory-quest-list" class="collection"></ul>
+          </div>
+          <div id="interchange">
+            <ul id="interchange-quest-list" class="collection"></ul>
+          </div>
+          <div id="labs">
+            <ul id="labs-quest-list" class="collection"></ul>
+          </div>
+          <div id="lighthouse">
+            <ul id="lighthouse-quest-list" class="collection"></ul>
+          </div>
+          <div id="reserve">
+            <ul id="reserve-quest-list" class="collection"></ul>
+          </div>
+          <div id="shoreline">
+            <ul id="shoreline-quest-list" class="collection"></ul>
+          </div>
+          <div id="woods">
+            <ul id="woods-quest-list" class="collection"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="./js/materialize.js"></script>
+  <script src="./js/app.js"></script>
+</html>

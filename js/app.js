@@ -160,6 +160,7 @@ const UICtrl = (function () {
     reserve: '#reserve-quest-list',
     shoreline: '#shoreline-quest-list',
     woods: '#woods-quest-list',
+    any: '#any-quest-list',
     questNameInput: '#quest-name',
     questDescriptionInput: '#quest-description',
     mapInput: '#map',
@@ -182,6 +183,7 @@ const UICtrl = (function () {
       let reserve = '';
       let shoreline = '';
       let woods = '';
+      let any = '';
 
       quests.forEach(function (quest) {
         if (quest.map === 'Customs') {
@@ -272,6 +274,17 @@ const UICtrl = (function () {
                   <em>${quest.map}</em>
                   <p>${quest.description}</p>
                 </li>`;
+        } else if (quest.map === 'Any') {
+          any += `
+                <li class="collection-item grey darken-3 white-text" id="quest-${quest.id}">
+                  <h5 class="grey-text text-lighten-1">${quest.name}</h5>
+                  <a href="" class="secondary-content">
+                    <i class="edit-quest fa fa-pencil"></i>
+                  </a>
+                  <strong>${quest.trader}</strong>
+                  <em>${quest.map}</em>
+                  <p>${quest.description}</p>
+                </li>`;
         }
       });
 
@@ -284,6 +297,7 @@ const UICtrl = (function () {
       document.querySelector(UISelectors.reserve).innerHTML = reserve;
       document.querySelector(UISelectors.shoreline).innerHTML = shoreline;
       document.querySelector(UISelectors.woods).innerHTML = woods;
+      document.querySelector(UISelectors.any).innerHTML = any;
     },
     getQuestInput: function () {
       return {
@@ -337,7 +351,12 @@ const UICtrl = (function () {
       } else if (quest.map === 'Woods') {
         document.querySelector(UISelectors.woods).style.display = 'block';
         document.querySelector(UISelectors.woods).insertAdjacentElement('beforeend', li);
+      } else if (quest.map === 'Any') {
+        document.querySelector('#any').style.display = 'block';
+        document.querySelector(UISelectors.any).insertAdjacentElement('beforeend', li);
       }
+
+      M.toast({ html: 'Quest Added', classes: 'rounded green darken-2 white-text' }, 3000);
     },
     updateQuestItem: function (quest) {
       let questItems = document.querySelectorAll(UISelectors.questList);
@@ -423,6 +442,10 @@ const UICtrl = (function () {
       if (document.querySelector(UISelectors.woods).hasChildNodes() === false) {
         document.querySelector(UISelectors.woods).style.display = 'none';
       }
+
+      if (document.querySelector(UISelectors.any).hasChildNodes() === false) {
+        document.querySelector('#any').style.display = 'none';
+      }
     },
     clearEditState: function () {
       UICtrl.clearInput();
@@ -470,6 +493,7 @@ const AppCtrl = (function (QuestCtrl, UICtrl, StorageCtrl) {
     document.querySelector(UISelectors.reserve).addEventListener('click', questEditClick);
     document.querySelector(UISelectors.shoreline).addEventListener('click', questEditClick);
     document.querySelector(UISelectors.woods).addEventListener('click', questEditClick);
+    document.querySelector(UISelectors.any).addEventListener('click', questEditClick);
 
     //Update item event
     document.querySelector(UISelectors.updateBtn).addEventListener('click', questUpdateSubmit);

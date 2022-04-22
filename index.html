@@ -46,6 +46,7 @@
               <div class="input-field col s6">
                 <select id="map">
                   <option value="" disabled selected>Select Map</option>
+                  <option value="Any">Any</option>
                   <option value="Customs">Customs</option>
                   <option value="Factory">Factory</option>
                   <option value="Interchange">Interchange</option>
@@ -72,8 +73,8 @@
               </div>
               <button class="add-btn btn blue-grey darken-3"><i class="fa fa-plus"></i> Add Quest</button>
               <button class="update-btn btn orange"><i class="fa fa-pencil-square-o"></i> Update Quest</button>
-              <button class="delete-btn btn red"><i class="fa fa-remove"></i> Delete Quest</button>
-              <button class="back-btn btn grey right"><i class="fa fa-chevron-circle-left"></i> Back</button>
+              <button class="back-btn btn grey"><i class="fa fa-chevron-circle-left"></i> Back</button>
+              <button class="delete-btn btn red right"><i class="fa fa-remove"></i> Delete Quest</button>
             </div>
           </form>
         </div>
@@ -83,6 +84,12 @@
       <div class="card grey darken-3 white-text">
         <div class="card-content">
           <h3 class="grey-text center-align">Quests</h3>
+        </div>
+        <div class="card-content">
+          <div id="any">
+            <div>Any Map</div>
+            <ul id="any-quest-list" class="collection"></ul>
+          </div>
         </div>
         <div class="card-tabs">
           <ul class="tabs tabs-fixed-width grey darken-3 white-text">
